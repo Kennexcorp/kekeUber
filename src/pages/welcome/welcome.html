@@ -1,0 +1,56 @@
+<ion-content padding id="welcome">
+
+  <ion-row>
+    <ion-col text-center>
+      <img src="assets/imgs/homePage.jpg" class="logo" align-self-center/>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1 text-center>Keke Uber</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
+          <ion-row>
+            <ion-col>
+              <ion-list inset>
+                <ion-item>
+                  <ion-input placeholder="Email" name="username" id="loginField" type="text" required [(ngModel)]="username" #email></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input placeholder="Password" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+              <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid">Login
+              </button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid padding-top="50px">
+    <ion-row>
+      <ion-col center text-center>
+        <button ion-button full color="success" (click)="signup()">Sign up</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer no-border >
+    <p padding="5px" text-center>keke uber v1.0</p>
+</ion-footer>
