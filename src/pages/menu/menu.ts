@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import {NavController, NavParams, Nav, App} from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { ListPage } from '../list/list';
 import {WelcomePage} from "../welcome/welcome";
 import {TripsPage} from "../trips/trips";
 import {AngularFireAuth} from "angularfire2/auth";
@@ -31,7 +30,7 @@ export class MenuPage {
     this.pages = [
 
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
+      // { title: 'List', component: ListPage },
       { title: 'Your Trips', component: TripsPage },
 
     ];
