@@ -17,6 +17,21 @@
   <ion-grid>
     <ion-row>
       <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label>Select Role</ion-label>
+            <ion-select [(ngModel)]="role">
+              <ion-option value="driver">Driver</ion-option>
+              <ion-option value="admin">Admin</ion-option>
+              <ion-option value="customer">Customer</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col>
         <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
           <ion-row>
             <ion-col>
@@ -50,7 +65,7 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-
+<!--
 <ion-footer no-border >
     <p padding="5px" text-center>keke uber v1.0 test</p>
-</ion-footer>
+</ion-footer>-->

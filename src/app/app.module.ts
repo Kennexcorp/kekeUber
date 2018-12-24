@@ -14,6 +14,7 @@ import {SignupPage} from "../pages/signup/signup";
 import {AngularFireModule} from "angularfire2";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {TripsPage} from "../pages/trips/trips";
+import {ProfilePage} from "../pages/profile/profile";
 
 const firebaseAuth = {
   apiKey: "AIzaSyAZxipfaMZfF5lMlB33iDm2bJbcPnZf24w",
@@ -33,6 +34,7 @@ const firebaseAuth = {
     MenuPage,
     HomePage,
     ListPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ const firebaseAuth = {
     HomePage,
     MenuPage,
     ListPage,
+    ProfilePage,
   ],
   providers: [
     StatusBar,

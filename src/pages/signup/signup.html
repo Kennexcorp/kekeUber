@@ -18,6 +18,15 @@
     <ion-row>
       <ion-col>
         <ion-list inset>
+          <ion-item>
+            <ion-label>Select Role</ion-label>
+            <ion-select [(ngModel)]="role" required id="role" name="role">
+              <ion-option value="driver">Driver</ion-option>
+              <ion-option value="admin">Admin</ion-option>
+              <ion-option value="customer">Customer</ion-option>
+            </ion-select>
+          </ion-item>
+
           <ion-item padding>
             <ion-input placeholder="First Name" name="firstName" id="firstName" type="text" required [(ngModel)]="firstName"></ion-input>
           </ion-item>

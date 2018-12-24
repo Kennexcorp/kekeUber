@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import {WelcomePage} from "../welcome/welcome";
 import {TripsPage} from "../trips/trips";
 import {AngularFireAuth} from "angularfire2/auth";
+import {ProfilePage} from "../profile/profile";
 
 /**
  * Generated class for the MenuPage page.
@@ -30,9 +31,8 @@ export class MenuPage {
     this.pages = [
 
       { title: 'Home', component: HomePage },
-      // { title: 'List', component: ListPage },
+      { title: 'My Profile', component: ProfilePage},
       { title: 'Your Trips', component: TripsPage },
-
     ];
   }
 

@@ -22,6 +22,7 @@ export class WelcomePage {
   password: any;
   error: any;
   loader: any;
+  role: string = "customer";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public fireAuth: AngularFireAuth, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     this.fireAuth.auth.onAuthStateChanged(function (user) {

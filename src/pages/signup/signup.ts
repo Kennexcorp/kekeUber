@@ -21,6 +21,7 @@ export class SignupPage {
   otherNames: any;
   username: any;
   password: any;
+  role: any;
   loader: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public fireAuth: AngularFireAuth, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
