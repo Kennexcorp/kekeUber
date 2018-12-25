@@ -3,6 +3,7 @@ import {AlertController, IonicPage, LoadingController, NavController, NavParams}
 import {SignupPage} from "../signup/signup";
 import {AngularFireAuth} from "angularfire2/auth";
 import {MenuPage} from "../menu/menu";
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the WelcomePage page.
@@ -24,12 +25,17 @@ export class WelcomePage {
   loader: any;
   role: string = "customer";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public fireAuth: AngularFireAuth, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
-    this.fireAuth.auth.onAuthStateChanged(function (user) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public fireAuth: AngularFireAuth, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public storage: Storage ) {
+    /*this.fireAuth.auth.onAuthStateChanged(function (user) {
       if (user) {
         navCtrl.push(MenuPage);
       }
-    });
+    });*/
+    this.storage.get('isLoggedIn').then((value) => {
+      if (value === 1) {
+        navCtrl.push(MenuPage);
+      }
+    }) 
   }
 
   ionViewCanEnter() {
@@ -64,7 +70,19 @@ export class WelcomePage {
   login(){
     this.showLoader('Logging in...');
     this.loader.present();
-    this.fireAuth.auth.signInWithEmailAndPassword(this.username, this.password)
+    this.storage.get(this.username).then((value) => {
+      console.log(value);
+      if (value.username === this.username && value.password == this.password) {
+        this.storage.set('isLoggedIn', 1);
+        this.storage.set('username', this.username);
+        this.navCtrl.push(MenuPage);
+      }
+    }).catch((error) => {
+      this.showAlert('Incorrect Email or Password');
+      console.log(error);
+    });
+    this.loader.dismiss();
+    /*this.fireAuth.auth.signInWithEmailAndPassword(this.username, this.password)
       .then(data => {
 
         console.log('Got data', data);
@@ -79,7 +97,7 @@ export class WelcomePage {
         this.loader.dismiss();
         this.showAlert(error.message);
 
-      });
+      });*/
 
 
   }

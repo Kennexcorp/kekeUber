@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {AlertController, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {MenuPage} from "../menu/menu";
 import {AngularFireAuth} from "angularfire2/auth";
+import {AuthProvider} from "../../providers/auth/auth";
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the SignupPage page.
@@ -24,7 +26,7 @@ export class SignupPage {
   role: any;
   loader: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public fireAuth: AngularFireAuth, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public fireAuth: AngularFireAuth, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -47,7 +49,7 @@ export class SignupPage {
   }
 
   signup() {
-    this.fireAuth.auth.createUserWithEmailAndPassword(this.username, this.password)
+    /*this.fireAuth.auth.createUserWithEmailAndPassword(this.username, this.password)
       .then(data => {
 
         this.showLoader("Signing up...");
@@ -66,6 +68,20 @@ export class SignupPage {
         this.loader.dismiss();
         console.log('got an error', error);
 
-      });
+      });*/
+    let registrationInfo = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      otherNames: this.otherNames,
+      username: this.username,
+      password: this.password,
+      role: this.role,
+    };
+
+    if (this.storage.set(registrationInfo.username, registrationInfo)) {
+      this.storage.set('isLoggedIn', 1);
+      this.storage.set('username', registrationInfo.username);
+      this.navCtrl.push(MenuPage);
+    }
   }
 }

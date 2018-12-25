@@ -21,29 +21,24 @@
   <form #formCtrl="ngForm">
     <div align="center" *ngIf="formCtrl.form.valid">
 
-      <h1> Profile</h1>
+      <h1>{{ profileInfo.username}} Profile</h1>
       <img class="profile-image" src="">
       <h4></h4>
-      <h5> years old</h5>
+      <h5> Role: <span style="color: #488aff">{{ profileInfo.role }}</span></h5>
     </div>
     <ion-list>
       <ion-item>
-        <ion-label floating>Name</ion-label>
-        <ion-input type="text" name="name" required></ion-input>
+        <ion-label floating>First Name</ion-label>
+        <ion-input type="text" name="first_name" value="{{ profileInfo.firstName }}" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Company</ion-label>
-        <ion-select  name="company" required>
-          <ion-option value="Maybank">Maybank</ion-option>
-          <ion-option value="CIMB">CIMB</ion-option>
-          <ion-option value="Public Bank">Public Bank</ion-option>
-        </ion-select>
+        <ion-label floating>Last Name</ion-label>
+        <ion-input type="text" name="last_name" value="{{ profileInfo.lastName }}" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label >Birth Date</ion-label>
-        <ion-datetime required name="birthdate" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"></ion-datetime>
+        <ion-label floating>Other Names</ion-label>
+        <ion-input type="text" name="other_names" value="{{ profileInfo.otherNames }}" required></ion-input>
       </ion-item>
-
     </ion-list>
     <button color="secondary" [disabled]="!formCtrl.form.valid" ion-button block >Save</button>
   </form>

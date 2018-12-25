@@ -5,6 +5,7 @@ import {WelcomePage} from "../welcome/welcome";
 import {TripsPage} from "../trips/trips";
 import {AngularFireAuth} from "angularfire2/auth";
 import {ProfilePage} from "../profile/profile";
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the MenuPage page.
@@ -26,7 +27,7 @@ export class MenuPage {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public fireAuth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public fireAuth: AngularFireAuth, public storage: Storage) {
 
     this.pages = [
 
@@ -48,8 +49,10 @@ export class MenuPage {
 
   logout()
   {
-    this.fireAuth.auth.signOut();
+    this.storage.remove('isLoggedIn');
+    this.storage.remove('username');
     this.app.getRootNav().push(WelcomePage);
+
   }
 
 }
